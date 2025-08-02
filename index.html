@@ -2,153 +2,115 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>¡Feliz Cumpleaños!</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Raleway:wght@400;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Raleway', sans-serif;
-      background: radial-gradient(circle at top, #0d1b2a, #000);
+      background: url('fondo.jpg') center/cover no-repeat fixed;
       color: white;
       min-height: 100vh;
-      overflow-x: hidden;
       position: relative;
     }
-
-    .web {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'),
-                        radial-gradient(circle at center, rgba(255,0,0,0.05), transparent);
-      background-size: cover;
-      pointer-events: none;
+    body::after {
+      content: ""; position: absolute; inset: 0;
+      background: rgba(0, 0, 0, 0.6);
       z-index: 0;
     }
-
-    .web-overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://i.ibb.co/gMyMqNy/abstract-web-light.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 60%;
-      opacity: 0.07;
-      z-index: 0;
-      pointer-events: none;
-    }
-
     .container {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
+      position: relative; z-index: 1;
+      min-height: 100vh; display: flex;
+      align-items: center; justify-content: center;
+      padding: 2rem; text-align: center;
     }
-
     .message {
-      max-width: 700px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.65);
-      padding: 2.5rem;
-      border: 2px solid #c8102e;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(200, 16, 46, 0.4);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2.5rem; max-width: 700px; width: 100%;
+      border: 2px solid #c8102e; border-radius: 20px;
+      box-shadow: 0 0 30px rgba(200,16,46,0.4);
       animation: fadeIn 2s ease-out;
     }
-
     .message h1 {
       font-family: 'Bangers', cursive;
-      font-size: 3rem;
-      color: #c8102e;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
+      font-size: 3rem; color: #c8102e;
+      margin-bottom: 1rem; letter-spacing: 2px;
       text-shadow: 2px 2px #000;
     }
-
     .message p {
-      font-size: 1.2rem;
-      line-height: 1.6;
+      font-size: 1.2rem; line-height: 1.6;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    audio {
-      display: none;
+    .start-btn {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      color: white; display: flex;
+      align-items: center; justify-content: center;
+      z-index: 100; flex-direction: column;
+      text-align: center;
     }
-
+    .start-btn button {
+      background: #c8102e; border: none;
+      color: white; padding: 1rem 2rem;
+      font-size: 1.2rem; border-radius: 10px;
+      cursor: pointer; font-family: 'Raleway', sans-serif;
+      transition: background 0.3s;
+    }
+    .start-btn button:hover {
+      background: #a00d22;
+    }
+    audio { display: none; }
     @media (max-width: 600px) {
-      .message h1 {
-        font-size: 2.2rem;
-      }
-
-      .message p {
-        font-size: 1rem;
-      }
-
-      .web-overlay {
-        background-size: 90%;
-      }
+      .message h1 { font-size: 2.2rem; }
+      .message p { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="web"></div>
-  <div class="web-overlay"></div>
+  <div class="start-btn" id="startScreen">
+    <h2>¡Bienvenida a tu sorpresa de cumpleaños! 🎉</h2>
+    <p>Haz clic para comenzar la experiencia.</p>
+    <button onclick="startExperience()">Iniciar experiencia</button>
+  </div>
 
   <div class="container">
     <div class="message">
       <h1>¡Feliz cumpleaños!</h1>
       <p>
-        Que tu día esté lleno de aventuras, sonrisas y momentos increíbles.<br />
-        Como diría Spidey:<br />
-        <strong>“Un gran poder conlleva una gran celebración.” 🕷️</strong>
-        <br><br>
-        Gracias por ser una compañera tan genial y por llenar de energía cada día.<br />
-        Espero que este nuevo año te traiga tanto entusiasmo como una escena de acción en Nueva York.<br />
+        Que tu día esté lleno de aventuras, sonrisas y momentos increíbles.<br>
+        Como diría Spidey:<br>
+        <strong>“Un gran poder conlleva una gran celebración.” 🕷️</strong><br><br>
+        Gracias por ser una compañera tan genial y por llenar de energía cada día.<br>
+        Espero que este nuevo año te traiga tanto entusiasmo como una escena de acción en Nueva York.<br>
         ¡Sigue brillando, luchando y trepando hacia tus sueños como toda una heroína!
       </p>
       <br>
       <p>
-        Posdata 1: Extraño las platicas y picaduras de costillas jaja.
-      </p><br>
+        Postdata 1: extraño las pláticas y picaduras de costillas jaja.
+      </p>
+      <br>
       <p>
-        Posdata 2: No se me olvido tu cumple, pasatela muy bien con tu familia y amigos.
+        Postdata 2: No se me olvidó tu cumple, pásatela muy bien con tu familia y amigos.
       </p>
     </div>
   </div>
 
   <audio id="bg-music" loop>
     <source src="superhero-theme-7963.mp3" type="audio/mpeg">
-    Tu navegador no soporta el audio HTML.
   </audio>
 
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const music = document.getElementById('bg-music');
-      music.volume = 0.2;
-      const playAudio = () => {
-        music.play().catch(() => {
-          // Requiere interacción del usuario: espera clic
-          document.body.addEventListener('click', () => music.play(), { once: true });
-        });
-      };
-      playAudio();
-    });
+    function startExperience() {
+      const audio = document.getElementById('bg-music');
+      audio.volume = 0.2;
+      audio.play().catch(err => console.log("Error audio:", err));
+      document.getElementById('startScreen').style.display = 'none';
+    }
   </script>
 </body>
 </html>
