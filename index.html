@@ -99,5 +99,13 @@
       </p>
     </div>
   </div>
+   <script>
+    function startExperience() {
+      const audio = document.getElementById('bg-music');
+      audio.volume = 0.2;
+      audio.play().catch(err => console.log("Error audio:", err));
+      document.getElementById('startScreen').style.display = 'none';
+    }
+   </script>
 </body>
 </html>
